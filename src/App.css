@@ -38,16 +38,19 @@ html, body {
   flex: 0.2;
   border: 1px solid red;
   margin: 2svh;
+  font-size: 5vh;
 }
 
 .story {
   flex: 0.5;
   border: 1px solid red;
   margin: 2svh;
+  font-size: 1.6vh;
 }
 
 .donation-links {
   flex: 0.3;
   border: 1px solid red;
   margin: 2svh;
+  font-size: 3vh;
 }
