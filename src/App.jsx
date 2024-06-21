@@ -1,78 +1,49 @@
-import { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import './Slides.css';
-import First from './slides/First.jsx';
-import Second from './slides/Second.jsx';
-import Third from './slides/Third.jsx';
-import Fourth from './slides/Fourth.jsx';
-import ParallaxSlide from './slides/ParallaxSlide.jsx';
+import { useRef, useEffect, useState } from 'react';
+import './App.css';
+import Slides from './components/Slides.jsx';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
-const Slides = ({ showDonationPage }) => {
-  const slides = [ParallaxSlide, First, Second, Third, Fourth];
-  const containerRef = useRef(null);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
+const App = () => {
+  const targetRef = useRef(null);
+  const [showDonationPage, setShowDonationPage] = useState(false);
 
   useEffect(() => {
-    const container = containerRef.current;
-
-    const handleScroll = (event) => {
-      if (container) {
-        container.scrollLeft += event.deltaY;
-        event.preventDefault();
-      }
-    };
-
-    const handleTouchStart = (event) => {
-      startX.current = event.touches[0].pageX - container.offsetLeft;
-      scrollLeft.current = container.scrollLeft;
-    };
-
-    const handleTouchMove = (event) => {
-      const x = event.touches[0].pageX - container.offsetLeft;
-      const walk = (x - startX.current) * 3; //scroll-fast
-      container.scrollLeft = scrollLeft.current - walk;
-      event.preventDefault();
-    };
-
-    if (container) {
-      container.addEventListener('wheel', handleScroll);
-      container.addEventListener('touchstart', handleTouchStart);
-      container.addEventListener('touchmove', handleTouchMove);
+    if (targetRef.current) {
+      disableBodyScroll(targetRef.current);
     }
 
     return () => {
-      if (container) {
-        container.removeEventListener('wheel', handleScroll);
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchmove', handleTouchMove);
+      if (targetRef.current) {
+        enableBodyScroll(targetRef.current);
       }
     };
   }, []);
 
+  const handleDonationClick = () => {
+    setShowDonationPage(prev => !prev);
+  };
+
   return (
-    <div className="slides-container" ref={containerRef}>
-      {showDonationPage ? (
-        <iframe
-          src="https://www.thedp.com/"
-          title="Donation Page"
-          width="100%"
-          height="100%"
-          style={{ border: 'none' }}
-        />
-      ) : (
-        slides.map((SlideComponent, index) => (
-          <div key={index} className='slide'>
-            <SlideComponent />
-          </div>
-        ))
-      )}
+    <div className="App">
+      <div className='slides' ref={targetRef}>
+        <Slides showDonationPage={showDonationPage} />
+      </div>
+      <div className='side-bar'>
+        <div className="logo">
+          {/* Logo content */}
+          Logo here
+        </div>
+        <div className="story">
+          {/* Story content */}
+          Story text here
+        </div>
+        <div className="donation-links" onClick={handleDonationClick}>
+          {/* Donation links content */}
+          Donation links here, for now click to access DP.com
+        </div>
+      </div>
     </div>
   );
 }
 
-Slides.propTypes = {
-  showDonationPage: PropTypes.bool.isRequired,
-};
-
-export default Slides;
+export default App;

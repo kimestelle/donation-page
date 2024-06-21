@@ -5,19 +5,17 @@
   width: 70vw;
   height: 100vh;
   overflow-x: auto;
-  overflow-y: hidden; 
-  /* scroll-snap-type: x proximity;  */
+  overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
 .slide {
-  flex: 0 0 70vw; 
+  flex: 0 0 70vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-snap-align: start;
   border: solid 1px blue;
   position: relative;
 }
