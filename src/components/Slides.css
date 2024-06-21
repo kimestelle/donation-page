@@ -1,22 +1,25 @@
 .slides-container {
   display: flex;
-  flex-direction: row; /* Changed to row for horizontal alignment */
+  flex-direction: row;
   align-items: center;
   width: 70vw;
   height: 100vh;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  overflow-y: hidden; /* Disable vertical scrolling */
-  /* scroll-snap-type: x mandatory; Enable horizontal scroll snapping */
+  overflow-x: auto;
+  overflow-y: hidden; 
+  /* scroll-snap-type: x proximity;  */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .slide {
-  flex: 0 0 70vw; /* Make each slide take the full viewport width */
-  height: 100vh; /* Make each slide take the full viewport height */
+  flex: 0 0 70vw; 
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-snap-align: start; /* Start of each slide aligns with container */
+  scroll-snap-align: start;
   border: solid 1px blue;
+  position: relative;
 }
 
 .spinner {
