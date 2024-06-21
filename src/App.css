@@ -1,0 +1,53 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  overscroll-behavior-x: contain;
+}
+
+
+.App {
+  display: flex;
+  width: 100svw;
+  height: 100svh;
+}
+
+.slides {
+  height: 100svh;
+  width: 70svw;
+  border: 2px solid blue;
+  overflow-y: auto;
+  overflow-x: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-bar {
+  height: 100svh;
+  width: 30svw;
+  border: 1px solid red;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  gap: 2svh;
+}
+
+.logo {
+  flex: 0.2;
+  border: 1px solid red;
+  margin: 2svh;
+}
+
+.story {
+  flex: 0.5;
+  border: 1px solid red;
+  margin: 2svh;
+}
+
+.donation-links {
+  flex: 0.3;
+  border: 1px solid red;
+  margin: 2svh;
+}
