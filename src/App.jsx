@@ -2,7 +2,12 @@ import { useRef, useEffect, useState } from 'react';
 import './App.css';
 import Slides from './components/Slides.jsx';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { GlowCapture, Glow} from '@codaworks/react-glow';
 import logo from './assets/logo.svg';
+import futuresLogo from './assets/futures-logo.png';
+import pubsocLogo from './assets/pubsoc-logo.png';
+import streetLogo from './assets/34st-logo.png';
+import annualLogo from './assets/annual-logo.png';
 
 const App = () => {
   const targetRef = useRef(null);
@@ -33,30 +38,38 @@ const App = () => {
       <div className='slides' ref={targetRef}>
         <Slides donationPage={showDonationPage} />
       </div>
+      <GlowCapture size='800'>
+      <Glow>
       <div className='side-bar'>
         <div className="logo clickable" onClick={handleDonationClick(' ')}>
           <img src={logo} alt="140 Years of the DP"/>
         </div>
         <div className="story">
           {/* Story content */}
-          Story text here
+          Story: Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, at quo! Cumque, sed dicta. Sapiente ut laudantium, itaque, deleniti natus perspiciatis nulla aliquam minima harum omnis voluptas beatae reprehenderit distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, voluptates labore! Perspiciatis quidem qui, quibusdam rerum deserunt quis cumque, aspernatur modi praesentium nihil nam? Blanditiis at magni aut aliquid quidem?
         </div>
+
         <div className="donation-links">
           {/* Donation links */}
           <div id='annual-campaign-link' className="donation-box clickable" onClick={handleDonationClick('annual-campaign')}>
-            Annual Campaign
+            <img src={annualLogo} alt="DP Annual Advances Campaign"/>
           </div>
+
           <div id='capital-campaign-link' className="donation-box clickable" onClick={handleDonationClick('capital-campaign')}>
-            Capital Campaign
+            <img src={futuresLogo} alt="DP Futures Campaign"/>
           </div>
+
           <div id='34k-34th-link' className="donation-box clickable" onClick={handleDonationClick('34th-campaign')}>
-            34K for 34th Campaign
+            <img src={streetLogo} alt="34k for 34th Street Campaign"/>
           </div>
+
           <div id='publishers-society-link' className="donation-box clickable" onClick={handleDonationClick('pubsoc-campaign')}>
-            Publishers Society
+            <img src={pubsocLogo} alt="DP Publisher's Society Campaign"/>
           </div>
         </div>
       </div>
+      </Glow>
+      </GlowCapture>
     </div>
   );
 }

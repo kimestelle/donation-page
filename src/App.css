@@ -18,9 +18,8 @@ html, body {
 
 .clickable:hover {
   cursor: pointer;
-  transform: scale(1.02);
+  filter: drop-shadow(0.2svh 0.2svh 0.2svh rgba(255, 255, 255, 0.9));
   transition: 0.1s ease;
-  filter: drop-shadow(0.1vh 0.1vh 0.1vh rgba(255, 255, 255, 0.4));
 }
 
 .slides {
@@ -29,59 +28,78 @@ html, body {
   border: 2px solid blue;
   overflow-y: auto;
   overflow-x: hidden;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .side-bar {
-  height: 100svh;
+  height: 96svh;
   width: 30svw;
   border: 1px solid red;
-  background-color: rgb(52, 52, 52);
+  background-color: rgb(39, 39, 39);
   display: flex;
   flex-direction: column;
+  padding: 2svh;
   gap: 2svh;
 }
 
+[glow] .side-bar {
+  background: linear-gradient(rgb(108, 18, 21), black, rgb(7, 41, 76));
+}
+
 .logo {
-  flex: 0.2;
+  flex: 0 1 auto;
   border: 1px solid red;
-  margin: 3svh;
-  margin-bottom: 0;
-  font-size: 5vh;
-  max-height: 30svh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap; 
+  padding-left: 5svw;
+  padding-right: 5svw;
+
 }
 
 .logo img {
-  max-width: 100%;
   max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  max-width: 100%;
   display: block;
 }
 
 .story {
-  flex: 0.5;
+  flex: 1 1 auto;
   border: 1px solid red;
-  margin: 2svh;
-  margin-bottom: 0;
-  font-size: 1.6vh;
+  font-size: 1.5svh;
+  margin-left: 2%;
+  padding-left: 3%;
+  padding-right: 5%;
+  border-left: 0.5px solid white;
 }
 
 .donation-links {
-  flex: 0.3;
-  border: 1px solid red;
-  margin: 2svh;
-  font-size: 3svh;
+  flex: 0 1 auto;
+  margin-top: 3vh;
+  padding: 1vh;
+  gap: 1vh;
   display: grid;
-  padding: 1svh;
-  gap: 1svh;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  border: 1px solid red;
 }
 
 .donation-box {
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+  flex-shrink: 1;
+}
+
+.donation-box img {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  max-height: 100%;
+}
+
+.donation-box:hover {
+  border: 0.3svh solid white;
 }
