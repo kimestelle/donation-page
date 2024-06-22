@@ -70,8 +70,9 @@ html, body {
 
 .donation-links {
   flex: 0 1 auto;
-  margin-top: 3svh;
+  margin-top: 0svh;
   padding: 1svh;
+  padding-top: 0svh;
   gap: 1svh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -84,7 +85,7 @@ html, body {
   align-items: center;
   border-radius: 5%;
   flex-shrink: 1;
-  border: 0.3vh solid transparent;
+  border: 0.3svh solid transparent;
 }
 
 .donation-box img {
@@ -94,7 +95,30 @@ html, body {
 }
 
 .donation-box:hover {
-  border: 0.3vh solid white;
+  border: 0.3svh solid white;
   transition: border-color 0.3s ease;
 }
 
+.return-text {
+  grid-column: 1 / -1;
+  font-weight: 700;
+  font-size: 1.5svh;
+  height: 2svh;
+  padding: 0;
+  padding-bottom: 1svh;
+  padding-right: 2svh;
+  margin: 0;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end;
+  justify-content: right;
+  border-radius: 1vh;
+  text-decoration: underline;
+  text-underline-offset: 0.7svh;
+}
+
+.return-text:hover {
+  background-color: white;
+  transition: background-color 0.2s ease;
+}

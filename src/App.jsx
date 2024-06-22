@@ -48,7 +48,6 @@ const App = () => {
           {/* Story content */}
           Story: Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, at quo! Cumque, sed dicta. Sapiente ut laudantium, itaque, deleniti natus perspiciatis nulla aliquam minima harum omnis voluptas beatae reprehenderit distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, voluptates labore! Perspiciatis quidem qui, quibusdam rerum deserunt quis cumque, aspernatur modi praesentium nihil nam? Blanditiis at magni aut aliquid quidem?
         </div>
-
         <div className="donation-links">
           {/* Donation links */}
           <div id='annual-campaign-link' className="donation-box clickable" onClick={handleDonationClick('annual-campaign')}>
@@ -66,6 +65,8 @@ const App = () => {
           <div id='publishers-society-link' className="donation-box clickable" onClick={handleDonationClick('pubsoc-campaign')}>
             <img src={pubsocLogo} alt="DP Publisher's Society Campaign"/>
           </div>
+          <p className='return-text clickable' onClick={handleDonationClick(' ')}>return to story</p>
+          
         </div>
       </div>
       </Glow>
