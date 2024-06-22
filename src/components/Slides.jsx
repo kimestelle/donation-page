@@ -6,9 +6,10 @@ import Second from './slides/Second.jsx';
 import Third from './slides/Third.jsx';
 import Fourth from './slides/Fourth.jsx';
 import ParallaxSlide from './slides/ParallaxSlide.jsx';
+import Cover from './slides/Cover.jsx';
 
-const Slides = ({ showDonationPage }) => {
-  const slides = [ParallaxSlide, First, Second, Third, Fourth];
+const Slides = ({ donationPage }) => {
+  const slides = [Cover, ParallaxSlide, First, Second, Third, Fourth];
   const containerRef = useRef(null);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
@@ -50,9 +51,11 @@ const Slides = ({ showDonationPage }) => {
     };
   }, []);
 
+  
+
   return (
     <div className="slides-container" ref={containerRef}>
-      {showDonationPage ? (
+      {!(donationPage === ' ') ? (
         <iframe
           src="https://www.thedp.com/"
           title="Donation Page"
@@ -72,7 +75,7 @@ const Slides = ({ showDonationPage }) => {
 }
 
 Slides.propTypes = {
-  showDonationPage: PropTypes.bool.isRequired,
+  donationPage: PropTypes.string.isRequired,
 };
 
 export default Slides;
