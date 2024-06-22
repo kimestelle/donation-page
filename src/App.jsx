@@ -11,7 +11,7 @@ import annualLogo from './assets/annual-logo.png';
 
 const App = () => {
   const targetRef = useRef(null);
-  const [showDonationPage, setShowDonationPage] = useState('');
+  const [showDonationPage, setShowDonationPage] = useState(' ');
 
   useEffect(() => {
     if (targetRef.current) {
