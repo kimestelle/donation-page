@@ -5,7 +5,8 @@ import First from './slides/First.jsx';
 import Second from './slides/Second.jsx';
 import Third from './slides/Third.jsx';
 import Fourth from './slides/Fourth.jsx';
-import ParallaxSlide from './slides/ParallaxSlide.jsx';
+// import Newspaper from './slides/Newspaper.jsx';
+import Snow from './slides/Snow.jsx';
 import Cover from './slides/Cover.jsx';
 
 
@@ -27,10 +28,12 @@ const getUrl = (donationPage) => {
 };
 
 const Slides = ({ donationPage }) => {
-  const slides = [Cover, ParallaxSlide, First, Second, Third, Fourth];
+  const slides = [Cover, First, Second, Third, Fourth];
   const containerRef = useRef(null);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+  // const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
 
   useEffect(() => {
     const container = containerRef.current;
@@ -39,8 +42,23 @@ const Slides = ({ donationPage }) => {
       if (container) {
         container.scrollLeft += event.deltaY;
         event.preventDefault();
+        // const slideWidth = container.clientWidth;
+        // const scrollLeft = container.scrollLeft;
+        // const index = Math.floor(scrollLeft / slideWidth);
+
+        // setCurrentSlideIndex(index);
+      }
+      const parallaxElement = document.querySelector('.parallax-container');
+
+      if (container && parallaxElement) {
+        const slideWidth = container.clientWidth; 
+        const scrollLeft = container.scrollLeft; 
+        const parallaxPosition = scrollLeft / slideWidth;
+
+        parallaxElement.style.left = `${parallaxPosition * 80}%`;
       }
     };
+
 
     const handleTouchStart = (event) => {
       startX.current = event.touches[0].pageX - container.offsetLeft;
@@ -73,8 +91,8 @@ const Slides = ({ donationPage }) => {
 
 
   return (
-    <div className="slides-container" ref={containerRef}>
-      {!(donationPage === ' ') ? (
+      !(donationPage === ' ') ? (
+        <div className="slides-container" ref={containerRef}>
         <iframe
           src={url}
           title="Donation Page"
@@ -82,14 +100,21 @@ const Slides = ({ donationPage }) => {
           height="100%"
           style={{ border: 'none' }}
         />
+        </div>
       ) : (
-        slides.map((SlideComponent, index) => (
-          <div key={index} className='slide'>
-            <SlideComponent />
+        <>
+          <div className="slides-container" ref={containerRef}>
+          {slides.map((SlideComponent, index) => (
+            <div key={index} className="slide">
+              <SlideComponent />
+            </div>
+          ))}
+          <div className="parallax-container" ref={containerRef}>
+            <Snow/>
           </div>
-        ))
-      )}
-    </div>
+          </div>
+        </>
+      )
   );
 }
 

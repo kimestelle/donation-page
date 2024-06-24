@@ -1,0 +1,13 @@
+.parallax-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 8vh;
+  width: 5vh;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  color: black;
+  opacity: 0.8;
+  z-index: 1;
+}

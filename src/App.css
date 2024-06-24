@@ -33,13 +33,13 @@ html, body {
 }
 
 .side-bar {
-  height: 96svh;
+  height: 100svh;
   width: 30svw;
   background-color: rgb(39, 39, 39);
   display: flex;
   flex-direction: column;
-  padding: 2svh;
   gap: 2svh;
+  box-shadow: inset 1svh 0.5svh 4svh rgba(0, 0, 0, 0.8);
 }
 
 [glow] .side-bar {
@@ -51,7 +51,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2svh 5svw;
+  padding: 4svh 7svw;
 }
 
 .logo img {
@@ -63,14 +63,15 @@ html, body {
 .story {
   flex: 1 1 auto;
   font-size: 1.5svh;
-  margin-left: 2%;
+  margin-left: 3svh;
+  margin-right: 1svh;
   padding: 0 3% 0 2%;
   border-left: 0.5px solid white;
 }
 
 .donation-links {
   flex: 0 1 auto;
-  margin-top: 0svh;
+  margin: 2svh;
   padding: 1svh;
   padding-top: 0svh;
   gap: 1svh;
