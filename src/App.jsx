@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import './App.css';
 import Slides from './components/Slides.jsx';
+import Story from './components/Story.jsx';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { GlowCapture, Glow} from '@codaworks/react-glow';
 import logo from './assets/logo.svg';
@@ -12,6 +13,7 @@ import annualLogo from './assets/annual-logo.png';
 const App = () => {
   const targetRef = useRef(null);
   const [showDonationPage, setShowDonationPage] = useState(' ');
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   useEffect(() => {
     if (targetRef.current) {
@@ -33,10 +35,14 @@ const App = () => {
     };}
   };
 
+  const handleSlideChange = (index) => {
+    setCurrentSlideIndex(index); 
+  };
+
   return (
     <div className="App">
       <div className='slides' ref={targetRef}>
-        <Slides donationPage={showDonationPage} />
+        <Slides donationPage={showDonationPage} onSlideChange={handleSlideChange} />
       </div>
       <GlowCapture size='800'>
       <Glow>
@@ -46,7 +52,7 @@ const App = () => {
         </div>
         <div className="story">
           {/* Story content */}
-          Story: Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, at quo! Cumque, sed dicta. Sapiente ut laudantium, itaque, deleniti natus perspiciatis nulla aliquam minima harum omnis voluptas beatae reprehenderit distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, voluptates labore! Perspiciatis quidem qui, quibusdam rerum deserunt quis cumque, aspernatur modi praesentium nihil nam? Blanditiis at magni aut aliquid quidem?
+          <Story currentSlideIndex={currentSlideIndex} /> {/* Render Story component with currentSlideIndex */}
         </div>
         <div className="donation-links">
           {/* Donation links */}

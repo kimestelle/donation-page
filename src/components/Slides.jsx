@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Slides.css';
 import First from './slides/First.jsx';
@@ -27,12 +27,12 @@ const getUrl = (donationPage) => {
   }
 };
 
-const Slides = ({ donationPage }) => {
+const Slides = ({ donationPage , onSlideChange}) => {
   const slides = [Cover, First, Second, Third, Fourth];
   const containerRef = useRef(null);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
-  // const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
 
   useEffect(() => {
@@ -42,11 +42,21 @@ const Slides = ({ donationPage }) => {
       if (container) {
         container.scrollLeft += event.deltaY;
         event.preventDefault();
-        // const slideWidth = container.clientWidth;
-        // const scrollLeft = container.scrollLeft;
-        // const index = Math.floor(scrollLeft / slideWidth);
+        const slideWidth = container.clientWidth;
+        const scrollLeft = container.scrollLeft;
+        const index = Math.floor(scrollLeft / slideWidth);
 
-        // setCurrentSlideIndex(index);
+        const middleOfSlide = index * slideWidth + slideWidth / 2;
+
+        if (scrollLeft >= middleOfSlide) {
+          setCurrentSlideIndex(index + 1); 
+          onSlideChange(index + 1); 
+        } else {
+          setCurrentSlideIndex(index);
+          onSlideChange(index);
+        }
+
+        event.preventDefault();
       }
       const parallaxElement = document.querySelector('.parallax-container');
 
@@ -120,6 +130,7 @@ const Slides = ({ donationPage }) => {
 
 Slides.propTypes = {
   donationPage: PropTypes.string.isRequired,
+  onSlideChange: PropTypes.number
 };
 
 export default Slides;
