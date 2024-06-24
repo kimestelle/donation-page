@@ -34,7 +34,6 @@ const Slides = ({ donationPage , onSlideChange}) => {
   const scrollLeft = useRef(0);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
-
   useEffect(() => {
     const container = containerRef.current;
 
@@ -45,6 +44,7 @@ const Slides = ({ donationPage , onSlideChange}) => {
         const slideWidth = container.clientWidth;
         const scrollLeft = container.scrollLeft;
         const index = Math.floor(scrollLeft / slideWidth);
+        
 
         const middleOfSlide = index * slideWidth + slideWidth / 2;
 
@@ -119,6 +119,7 @@ const Slides = ({ donationPage , onSlideChange}) => {
               <SlideComponent />
             </div>
           ))}
+          
           <div className="parallax-container" ref={containerRef}>
             <Snow/>
           </div>
