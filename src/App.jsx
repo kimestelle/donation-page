@@ -58,18 +58,22 @@ const App = () => {
           {/* Donation links */}
           <div id='annual-campaign-link' className="donation-box clickable" onClick={handleDonationClick('annual-campaign')}>
             <img src={annualLogo} alt="DP Annual Advances Campaign"/>
+            <p>ANNUAL ADVANCES</p>
           </div>
 
           <div id='capital-campaign-link' className="donation-box clickable" onClick={handleDonationClick('capital-campaign')}>
             <img src={futuresLogo} alt="DP Futures Campaign"/>
+            <p>DP FUTURES CAMPAIGN</p>
           </div>
 
           <div id='34k-34th-link' className="donation-box clickable" onClick={handleDonationClick('34th-campaign')}>
             <img src={streetLogo} alt="34k for 34th Street Campaign"/>
+            <p>34K for 34TH STREET</p>
           </div>
 
           <div id='publishers-society-link' className="donation-box clickable" onClick={handleDonationClick('pubsoc-campaign')}>
             <img src={pubsocLogo} alt="DP Publisher's Society Campaign"/>
+            <p>PUBLISHERS SOCIETY</p>
           </div>
           <p className='return-text clickable' onClick={handleDonationClick(' ')}>return to story</p>
           

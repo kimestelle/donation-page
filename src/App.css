@@ -82,8 +82,11 @@ html, body {
 
 .donation-box {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 50%;
+  text-align: center;
   border-radius: 5%;
   flex-shrink: 1;
   border: 0.3svh solid transparent;
