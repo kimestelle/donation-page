@@ -1,0 +1,28 @@
+/* SlideFrame.css */
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-layer-1 {
+  z-index: 1;
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-layer-2 {
+  z-index: 2;
+  transform: translateZ(-0.5px) scale(1.5);
+}
+
+.parallax-layer-3 {
+  z-index: 3;
+  transform: translateZ(0px) scale(1);
+}

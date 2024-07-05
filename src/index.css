@@ -1,0 +1,27 @@
+/* index.css */
+#root {
+    background-color: black;
+  }
+  
+  a {
+    color: white;
+    font-family: "nocturne-serif", serif;
+    font-weight: 700;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overscroll-behavior-x: contain;
+    font-family: "nocturne-serif", serif;
+    font-weight: 400;
+    color: white;
+  }
+
+  div {
+    box-sizing: border-box;
+  }
+  

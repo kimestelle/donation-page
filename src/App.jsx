@@ -1,19 +1,17 @@
 import { useRef, useEffect, useState } from 'react';
-import './App.css';
-import Slides from './components/Slides.jsx';
-import Story from './components/Story.jsx';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { GlowCapture, Glow} from '@codaworks/react-glow';
+import Slides from './components/Slides.jsx';
 import logo from './assets/logo.svg';
 import futuresLogo from './assets/futures-logo.png';
 import pubsocLogo from './assets/pubsoc-logo.png';
 import streetLogo from './assets/34st-logo.png';
 import annualLogo from './assets/annual-logo.png';
+import './App.css';
+import { SlideFrameScrollProvider } from './context/SlideFrameScrollContext.jsx';
 
 const App = () => {
   const targetRef = useRef(null);
   const [showDonationPage, setShowDonationPage] = useState(' ');
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   useEffect(() => {
     if (targetRef.current) {
@@ -28,33 +26,28 @@ const App = () => {
   }, []);
 
   const handleDonationClick = (page) => {
-    if (page != showDonationPage) {
     return () => {
       setShowDonationPage(page);
       console.log(page);
-    };}
-  };
-
-  const handleSlideChange = (index) => {
-    setCurrentSlideIndex(index); 
+    };
   };
 
   return (
-    <div className="App">
-      <div className='slides' ref={targetRef}>
-        <Slides donationPage={showDonationPage} onSlideChange={handleSlideChange} />
-      </div>
-      <GlowCapture size='800'>
-      <Glow>
-      <div className='side-bar'>
-        <div className="logo clickable" onClick={handleDonationClick(' ')}>
-          <img src={logo} alt="140 Years of the DP"/>
+    <SlideFrameScrollProvider>
+      <div className="App">
+        <div className='top-bar'>
+          <a href="https://www.dailypennalumni.com/" rel="noreferrer">
+            Visit the DPAA Website!
+          </a>
         </div>
-        <div className="story">
-          {/* Story content */}
-          <Story currentSlideIndex={currentSlideIndex} /> {/* Render Story component with currentSlideIndex */}
+
+        <div className='slides' ref={targetRef}>
+          <Slides donationPage={showDonationPage} />
         </div>
-        <div className="donation-links">
+
+        <div className='bottom-bar'>
+          <img src={logo} className='logo clickable' onClick={handleDonationClick(' ')} alt="140 Years of the DP"/>
+          <div className='vertical-line'/>
           {/* Donation links */}
           <div id='annual-campaign-link' className="donation-box clickable" onClick={handleDonationClick('annual-campaign')}>
             <img src={annualLogo} alt="DP Annual Advances Campaign"/>
@@ -75,13 +68,9 @@ const App = () => {
             <img src={pubsocLogo} alt="DP Publisher's Society Campaign"/>
             <p>PUBLISHERS SOCIETY</p>
           </div>
-          <p className='return-text clickable' onClick={handleDonationClick(' ')}>return to story</p>
-          
         </div>
       </div>
-      </Glow>
-      </GlowCapture>
-    </div>
+    </SlideFrameScrollProvider>
   );
 }
 

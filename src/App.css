@@ -1,19 +1,9 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  overscroll-behavior-x: contain;
-}
-
 .App {
   display: flex;
   width: 100svw;
   height: 100svh;
-  font-family: "nocturne-serif", serif;
-  font-weight: 400;
-  color: white;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .clickable:hover {
@@ -22,9 +12,20 @@ html, body {
   transition: 0.1s ease;
 }
 
+.top-bar {
+  width: 100svw;
+  height: 5svh;
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: rgb(20, 20, 20);
+  padding: 1.5svh;
+  font-size: 1.8svh;
+}
+
 .slides {
-  height: 100svh;
-  width: 70svw;
+  height: 85svh;
+  width: 100svw;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
@@ -32,74 +33,50 @@ html, body {
   align-items: center;
 }
 
-.side-bar {
-  height: 100svh;
-  width: 30svw;
-  background-color: rgb(39, 39, 39);
+.bottom-bar {
+  height: 10svh;
+  max-height: 10svh;
+  width: 100svw;
+  background-color: rgb(20, 20, 20);
+  border: 1px solid blue;
   display: flex;
-  flex-direction: column;
-  gap: 2svh;
+  flex-direction: row;
+  gap: 2svw;
+  padding: 1.7svh;
+  padding-left: 20%;
+  padding-right: 20%;
   box-shadow: inset 1svh 0.5svh 4svh rgba(0, 0, 0, 0.8);
-}
-
-[glow] .side-bar {
-  background: linear-gradient(rgb(108, 18, 21), black, rgb(7, 41, 76));
+  justify-content: center;
 }
 
 .logo {
-  flex: 0 1 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4svh 7svw;
+  height: 100%;
 }
 
-.logo img {
-  max-width: 100%;
-  max-height: 20svh;
-  object-fit: contain;
-}
-
-.story {
-  flex: 1 1 auto;
-  font-size: 1.5svh;
-  margin-left: 3svh;
-  margin-right: 1svh;
-  padding: 0 3% 0 2%;
-  border-left: 0.5px solid white;
-}
-
-.donation-links {
-  flex: 0 1 auto;
-  margin: 2svh;
-  padding: 1svh;
-  padding-top: 0svh;
-  gap: 1svh;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+.vertical-line {
+  width: 0.5px;
+  border-right: 0.5px solid white;
 }
 
 .donation-box {
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 50%;
   text-align: center;
   border-radius: 5%;
-  flex-shrink: 1;
-  border: 0.3svh solid transparent;
+  border: 1px solid transparent;
 }
 
 .donation-box img {
-  max-width: 90%;
-  max-height: 17svh;
+  max-height: 80%;
   object-fit: contain;
 }
 
 .donation-box:hover {
-  border: 0.3svh solid white;
+  border: 1px solid white;
   transition: border-color 0.3s ease;
 }
 
@@ -107,17 +84,13 @@ html, body {
   grid-column: 1 / -1;
   font-weight: 700;
   font-size: 1.5svh;
-  height: 2svh;
-  padding: 0;
-  padding-bottom: 1svh;
-  padding-right: 2svh;
   margin: 0;
   color: white;
   display: flex;
   align-items: flex-end;
   align-self: flex-end;
   justify-content: right;
-  border-radius: 1vh;
+  border-radius: 5%;
   text-decoration: underline;
   text-underline-offset: 0.7svh;
 }

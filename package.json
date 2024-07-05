@@ -15,8 +15,10 @@
     "@codaworks/react-glow": "^1.0.6",
     "@react-spring/parallax": "^9.7.3",
     "body-scroll-lock": "^4.0.0-beta.0",
+    "framer-motion": "^11.2.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1",
     "react-scroll-parallax": "^3.4.5"
   },
   "devDependencies": {

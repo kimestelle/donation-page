@@ -1,14 +1,10 @@
-import { useEffect, useRef, useMemo, useState } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import './Slides.css';
-import First from './slides/First.jsx';
-import Second from './slides/Second.jsx';
-import Third from './slides/Third.jsx';
-import Fourth from './slides/Fourth.jsx';
-// import Newspaper from './slides/Newspaper.jsx';
-import Snow from './slides/Snow.jsx';
-import Cover from './slides/Cover.jsx';
+import { useSlideFrameScroll } from '../context/SlideFrameScrollContext.jsx'; // Correct import path
 
+import SlideFrame from './SlideFrame'
+
+import './Slides.css';
 
 const getUrl = (donationPage) => {
   switch (donationPage) {
@@ -27,12 +23,11 @@ const getUrl = (donationPage) => {
   }
 };
 
-const Slides = ({ donationPage , onSlideChange}) => {
-  const slides = [Cover, First, Second, Third, Fourth];
+const Slides = ({ donationPage }) => {
   const containerRef = useRef(null);
+  const { setScrollPosition } = useSlideFrameScroll();
   const startX = useRef(0);
   const scrollLeft = useRef(0);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -41,34 +36,9 @@ const Slides = ({ donationPage , onSlideChange}) => {
       if (container) {
         container.scrollLeft += event.deltaY;
         event.preventDefault();
-        const slideWidth = container.clientWidth;
-        const scrollLeft = container.scrollLeft;
-        const index = Math.floor(scrollLeft / slideWidth);
-        
-
-        const middleOfSlide = index * slideWidth + slideWidth / 2;
-
-        if (scrollLeft >= middleOfSlide) {
-          setCurrentSlideIndex(index + 1); 
-          onSlideChange(index + 1); 
-        } else {
-          setCurrentSlideIndex(index);
-          onSlideChange(index);
-        }
-
-        event.preventDefault();
-      }
-      const parallaxElement = document.querySelector('.parallax-container');
-
-      if (container && parallaxElement) {
-        const slideWidth = container.clientWidth; 
-        const scrollLeft = container.scrollLeft; 
-        const parallaxPosition = scrollLeft / slideWidth;
-
-        parallaxElement.style.left = `${parallaxPosition * 80}%`;
+        setScrollPosition(container.scrollLeft);
       }
     };
-
 
     const handleTouchStart = (event) => {
       startX.current = event.touches[0].pageX - container.offsetLeft;
@@ -77,9 +47,10 @@ const Slides = ({ donationPage , onSlideChange}) => {
 
     const handleTouchMove = (event) => {
       const x = event.touches[0].pageX - container.offsetLeft;
-      const walk = (x - startX.current) * 3; //scroll-fast
+      const walk = (x - startX.current) * 3;
       container.scrollLeft = scrollLeft.current - walk;
       event.preventDefault();
+      setScrollPosition(container.scrollLeft);
     };
 
     if (container) {
@@ -95,14 +66,13 @@ const Slides = ({ donationPage , onSlideChange}) => {
         container.removeEventListener('touchmove', handleTouchMove);
       }
     };
-  }, []);
+  }, [setScrollPosition]);
 
   const url = useMemo(() => getUrl(donationPage), [donationPage]);
 
-
   return (
-      !(donationPage === ' ') ? (
-        <div className="slides-container" ref={containerRef}>
+    donationPage !== ' ' ? (
+      <div className="slides-container" ref={containerRef}>
         <iframe
           src={url}
           title="Donation Page"
@@ -110,28 +80,18 @@ const Slides = ({ donationPage , onSlideChange}) => {
           height="100%"
           style={{ border: 'none' }}
         />
-        </div>
-      ) : (
-        <>
-          <div className="slides-container" ref={containerRef}>
-          {slides.map((SlideComponent, index) => (
-            <div key={index} className="slide">
-              <SlideComponent />
-            </div>
-          ))}
-          
-          <div className="parallax-container" ref={containerRef}>
-            <Snow/>
-          </div>
-          </div>
-        </>
-      )
+      </div>
+    ) : (
+      <div className="slides-container" ref={containerRef}>
+        <div className="overlay"></div>
+        <SlideFrame />
+      </div>
+    )
   );
-}
+};
 
 Slides.propTypes = {
-  donationPage: PropTypes.string.isRequired,
-  onSlideChange: PropTypes.number
+  donationPage: PropTypes.string,
 };
 
 export default Slides;

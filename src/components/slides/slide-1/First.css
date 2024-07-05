@@ -1,0 +1,35 @@
+.first {
+    width: 120svw;
+    height: 85svh;
+    background-color: black;
+    display: flex;
+    align-items: flex-end;
+    padding: 3svh;
+  }
+  
+  .frame {
+    height: 55svh;
+    width: 60svh;
+    overflow: hidden;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .newsroom-img {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .newsroom-img img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+  }
+  
