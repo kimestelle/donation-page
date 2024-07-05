@@ -1,0 +1,72 @@
+.second {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    padding: 1rem;
+}
+
+.card-container {
+    perspective: 1000px; /* This is needed for the 3D effect */
+    width: 15svh; /* Adjust as needed */
+    height: 10svh; /* Adjust as needed */
+    position: relative; /* Ensure the front and back are positioned relative to this */
+    display: flex;
+    overflow: hidden
+}
+
+.card-front, .card-back {
+    width: 15svh; /* Adjust as needed */
+    height: 10svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 0.5px solid #ccc;
+    cursor: pointer;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+}
+
+
+.card-front img, .card-back img {
+    
+    width: 100%;
+    height: 100%;
+}
+
+.placeholder-front, .placeholder-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+.cover-placeholder {
+    width: 15svh; /* Adjust as needed */
+    height: 20svh; /* Adjust as needed */
+    grid-row: span 2;
+}
+
+.additional-placeholder {
+    visibility: hidden;
+}
+
+.cover-front, .cover-back {
+    width: 15svh;
+    height: 20svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+.cover-front img {
+    width: 100%;
+    height: 100%;
+
+}

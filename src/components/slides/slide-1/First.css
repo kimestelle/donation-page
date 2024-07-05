@@ -1,5 +1,5 @@
 .first {
-    width: 120svw;
+    width: 120svh;
     height: 85svh;
     background-color: black;
     display: flex;
@@ -8,28 +8,45 @@
   }
   
   .frame {
-    height: 55svh;
-    width: 60svh;
+    height: 50svh;
+    width: 65svh;
     overflow: hidden;
-    border: 1px solid red;
+    border: 1px solid white;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     position: relative;
+    z-index: 2;
   }
   
   .newsroom-img {
     position: absolute;
-    height: 100%;
+    height: 110%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     overflow: hidden;
   }
   
   .newsroom-img img {
-    height: 100%;
+    height: 110%;
     width: auto;
     object-fit: cover;
   }
+
+  .text {
+    width: 50svh;
+    max-width: 50svh;
+    margin-left: 4svh;
+    height: 75svh;
+    z-index: 2;
+  }
   
+  .bg-image {
+    position: absolute;
+    z-index: 0;
+    opacity: 25%;
+    height: 70svh;
+    left: 45svh;
+    bottom: 10svh;
+  }

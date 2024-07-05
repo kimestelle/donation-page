@@ -1,5 +1,14 @@
 .story-panel {
-    width: 50svw;
+    width: 50svh;
     height: 85svh;
     background-color: black;
+    padding: 5svh;
+}
+
+.milestones {
+    margin-top: 5svh;
+}
+
+li {
+    font-weight: 200;
 }

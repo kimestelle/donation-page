@@ -1,6 +1,6 @@
 import { ParallaxProvider } from 'react-scroll-parallax';
 import First from './slides/slide-1/First.jsx';
-import Second from './slides/Second.jsx';
+import Second from './slides/slide-2/Second.jsx';
 import Third from './slides/Third.jsx';
 import Fourth from './slides/Fourth.jsx';
 import Snow from './slides/Snow.jsx';
@@ -11,6 +11,7 @@ import './SlideFrame.css';
 
 const SlideFrame = () => {
   const slides = [Cover, First, Second, Third, Fourth];
+  const years = [1800, 1900, 2000, 2020, 2025];
 
   return (
     <SlideFrameScrollProvider>
@@ -18,7 +19,7 @@ const SlideFrame = () => {
         {slides.map((SlideComponent, index) => (
           <div key={index} className="slide">
             <SlideComponent />
-            <StoryPanel story='hihihi' />
+            <StoryPanel story={years[index].toString()} />
           </div>
         ))}
         <div className="parallax-container">

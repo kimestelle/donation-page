@@ -8,6 +8,15 @@
     font-family: "nocturne-serif", serif;
     font-weight: 700;
   }
+
+  h1 {
+    font-family: "nocturne-serif", serif;
+    font-weight: 600;
+    font-size: 5svh;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+    text-align: center;
+    padding: 2svh;
+  }
   
   html, body {
     margin: 0;
