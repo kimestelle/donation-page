@@ -36,8 +36,8 @@ const App = () => {
     <SlideFrameScrollProvider>
       <div className="App">
         <div className='top-bar'>
-          <a href="https://www.dailypennalumni.com/" rel="noreferrer">
-            Visit the DPAA Website!
+          <a href="https://www.dailypennalumni.com/giving" rel="noreferrer">
+            Website not working? Click here
           </a>
         </div>
 
