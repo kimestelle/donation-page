@@ -1,8 +1,9 @@
 .story-panel {
     width: 50svh;
-    height: 85svh;
+    height: 110svh;
     background-color: black;
-    padding: 5svh;
+    padding: 10svh;
+    padding-top: 40svh;
 }
 
 .milestones {

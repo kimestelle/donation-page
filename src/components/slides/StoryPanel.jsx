@@ -1,32 +1,23 @@
 import PropTypes from 'prop-types';
+import { Parallax } from 'react-scroll-parallax';
+import './StoryPanel.css';
 
-import './StoryPanel.css'
-
-const StoryPanel = ( {story} ) => {
-    return (
-        <div className='story-panel'>
-            <h1>
-            {story}
-            </h1>
-            <div className='milestones'>
-            <ul>
-                <li>
-                    milestone 1
-                </li>
-                <li>
-                    milestone 2
-                </li>
-                <li>
-                    milestone 3
-                </li>
-            </ul>
-            </div>
+const StoryPanel = ({ story, milestones }) => {
+  return (
+    <Parallax translateY={[0, -10]}>
+      <div className='story-panel'>
+        <h1>{story}</h1>
+        <div className='milestones'>
+          {milestones}
         </div>
-    )
-}
+      </div>
+    </Parallax>
+  );
+};
 
 StoryPanel.propTypes = {
-    story: PropTypes.string.isRequired,
-  };
+  story: PropTypes.string.isRequired,
+  milestones: PropTypes.string,
+};
 
 export default StoryPanel;
